@@ -8,12 +8,12 @@ package util;
  *
  * @author Fate
  */
-public class SearchResult {
+public class Article {
 
-    String title;
-    String link;
-    String description;
-    String source;
+    private String title;
+    private String link;
+    private String description;
+    private String source;
 
     public String getDescription() {
         return description;
@@ -45,5 +45,12 @@ public class SearchResult {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public Article(String title, String link, String description, String source) {
+        this.title = title;
+        this.link = link;
+        this.description = description;
+        this.source = source;
     }
 }

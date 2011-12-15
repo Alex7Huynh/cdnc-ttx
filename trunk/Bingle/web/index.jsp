@@ -12,6 +12,9 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <form id="frmSearch" action="indexController">
+            <input type="text" id="key" name="key"/>
+            <input type="submit" name="Search" value="Search"/>
+        </form>
     </body>
 </html>
