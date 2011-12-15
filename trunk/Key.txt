@@ -1,0 +1,19 @@
+BING
+AppID (Bing): FE383F9A948802A6D19102654EE563456120DDC6
+-----------------------
+API Key (Custom search google): AIzaSyDvysnoSg7Xlw4sKcmtdKhsRx_EaD_59TM
+Search engine unique ID: 006128248623655005956:_w9w403uat0
+https://www.googleapis.com/customsearch/v1?key=AIzaSyDvysnoSg7Xlw4sKcmtdKhsRx_EaD_59TM&cx=006128248623655005956:_w9w403uat0&q=flowers&alt=json
+---Code---
+<div id="cse" style="width: 100%;">Loading</div>
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script type="text/javascript"> 
+  google.load('search', '1', {language : 'en', style : google.loader.themes.BUBBLEGUM});
+  google.setOnLoadCallback(function() {
+    var customSearchControl = new google.search.CustomSearchControl(
+      '006128248623655005956:_w9w403uat0');
+
+    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+    customSearchControl.draw('cse');
+  }, true);
+</script>
