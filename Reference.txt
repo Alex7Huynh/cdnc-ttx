@@ -18,3 +18,5 @@ JSON
 https://www.googleapis.com/customsearch/v1?key=AIzaSyDvysnoSg7Xlw4sKcmtdKhsRx_EaD_59TM&cx=006128248623655005956:_w9w403uat0&q=flowers
 http://www.json.org/java/
 http://answers.oreilly.com/topic/257-how-to-parse-json-in-java/
+http://mkyong.com/tutorials/java-json-tutorials/
+http://viralpatel.net/blogs/2009/02/creating-parsing-json-data-with-java-servlet-struts-jsp-json.html
