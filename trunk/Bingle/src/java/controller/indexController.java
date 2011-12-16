@@ -5,7 +5,6 @@
 package controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import util.Article;
-import util.GoogleSearchEngine;
+import util.SearchEngine;
 
 /**
  *
@@ -37,7 +36,7 @@ public class indexController extends HttpServlet {
         String keyWord = request.getParameter("key");
         String url = "indexPage.jsp";
         if(keyWord != null) {
-            ArrayList<Article> googleArticles = GoogleSearchEngine.Search(keyWord, 1);
+            ArrayList<Article> googleArticles = SearchEngine.SearchGoogle(keyWord, 1);
             request.setAttribute("action", keyWord);
             request.setAttribute("googleArticles", googleArticles);
             url = "indexPage.jsp";
