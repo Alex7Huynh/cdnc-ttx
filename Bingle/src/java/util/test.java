@@ -17,6 +17,12 @@ public class test {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        ArrayList<Article> googleArticles = GoogleSearchEngine.Search("flowers", 0);
+        //ArrayList<Article> GPage1 = SearchEngine.SearchGoogle("flowers", 1);
+        //ArrayList<Article> GPage2 = SearchEngine.SearchGoogle("flowers", 2);
+        ArrayList<Article> BingArticles = SearchEngine.SearchBing("flowers", 1);
+        //ArrayList<Article> BingLibraryArticles = SearchEngine.SearchBingLibrary("flowers", 1);
+        
+        int a;
+        a=10;
     }
 }
