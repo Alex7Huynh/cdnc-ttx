@@ -5,16 +5,30 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Bingle</title>
     </head>
     <body>
         <form id="frmSearch" action="indexController">
-            <input type="text" id="key" name="key"/>
+            <input type="text" id="key" name="key" value="${key}"/>
             <input type="submit" name="Search" value="Search"/>
+            <input type="hidden" name="act" value="search"/>
         </form>
+        <table>
+            <c:forEach items="${articles}" var="item" varStatus="i" begin="0" end="${articles.size()}" step="1">            
+            <tr>
+                <td>
+                    <strong>${item.title}</strong><br/>
+                    ${item.link}<br/>
+                    ${item.description}<br/>
+                    Source: ${item.source}<br/>
+                </td>
+            </tr>
+            </c:forEach>
+        </table>
     </body>
 </html>

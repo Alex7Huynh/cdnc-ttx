@@ -33,13 +33,16 @@ public class indexController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession();
-        String keyWord = request.getParameter("key");
-        String url = "indexPage.jsp";
-        if(keyWord != null) {
-            ArrayList<Article> googleArticles = SearchEngine.SearchGoogle(keyWord, 1);
+        String act = request.getParameter("act");
+        String url = "index.jsp";
+        if(act != null && "init".equals(act)) {
+            url = "index.jsp";
+        } else {
+            String keyWord = request.getParameter("key");
+            ArrayList<Article> articles = SearchEngine.Search(keyWord, 1, 10);
             request.setAttribute("action", keyWord);
-            request.setAttribute("googleArticles", googleArticles);
-            url = "indexPage.jsp";
+            request.setAttribute("articles", articles);
+            url = "index.jsp";
         }
         request.getRequestDispatcher(url).forward(request, response);
     }

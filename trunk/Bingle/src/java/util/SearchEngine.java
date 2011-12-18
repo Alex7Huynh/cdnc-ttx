@@ -19,6 +19,8 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import net.sf.json.JSONSerializer;
@@ -29,14 +31,14 @@ import net.sf.json.JSONSerializer;
  */
 public class SearchEngine {
 
-    public static ArrayList<Article> SearchGoogle(String aKeyword, int aPageNumber) {
+    public static ArrayList<Article> SearchGoogle(String aKeyword, int aPageNumber, int aQuantity) {
         ArrayList<Article> articles = new ArrayList<Article>();
         try {
             //Create search string
             String APIKey = "AIzaSyDvysnoSg7Xlw4sKcmtdKhsRx_EaD_59TM";
             String CSEID = "006128248623655005956:_w9w403uat0";
             String urlTemplate = "https://www.googleapis.com/customsearch/v1?key="
-                    + APIKey + "&cx=" + CSEID + "&q=" + aKeyword + "&start=" + (aPageNumber - 1) * 10 + 1 + "&alt=json";
+                    + APIKey + "&cx=" + CSEID + "&q=" + aKeyword + "&num=" + aQuantity + "&start=" + (aPageNumber - 1) * 10 + 1 + "&alt=json";
             //Connect
             URL url = new URL(urlTemplate);
             URLConnection connection = url.openConnection();
@@ -63,13 +65,13 @@ public class SearchEngine {
         return articles;
     }
 
-    public static ArrayList<Article> SearchBing(String aKeyword, int aPageNumber) {
+    public static ArrayList<Article> SearchBing(String aKeyword, int aPageNumber, int aQuantity) {
         ArrayList<Article> articles = new ArrayList<Article>();
         try {
             //Create search string
             String apiID = "FE383F9A948802A6D19102654EE563456120DDC6";
-            String urlTemplate = "http://api.bing.net/json.aspx?Appid=" 
-                    + apiID + "&query=" + aKeyword + "&web.offset=" + (aPageNumber-1)*10 + "&sources=web";
+            String urlTemplate = "http://api.bing.net/json.aspx?Appid="
+                    + apiID + "&query=" + aKeyword + "&web.count=" + aQuantity + "&web.offset=" + (aPageNumber - 1) * 10 + "&sources=web";
             //Connect
             URL url = new URL(urlTemplate);
             URLConnection connection = url.openConnection();
@@ -141,6 +143,38 @@ public class SearchEngine {
             articles.add(new Article(result.getTitle(), result.getUrl(), result.getDescription(), "Bing"));
         }
 
+        return articles;
+    }
+
+    public static ArrayList<Article> Search(String aKeyword, int aPageNumber, int aQuantity) {
+        ArrayList<Article> articles = new ArrayList<Article>();
+        ArrayList<Article> articlesGoogle = SearchEngine.SearchGoogle(aKeyword, aPageNumber, aQuantity);
+        ArrayList<Article> articlesBing = SearchEngine.SearchBing(aKeyword, aPageNumber, aQuantity);
+        
+        //Lấy phần chung
+        for (int i = 0; i < articlesGoogle.size(); ++i) {
+            boolean flag = false;
+            for (int j = 0; j < articlesBing.size(); ++j) {
+                if (articlesGoogle.get(i).getTitle().equals(articlesBing.get(j).getTitle())) {
+                    articlesGoogle.get(i).setSource("Google/Bing");
+                    articles.add(articlesGoogle.get(i));
+                    articlesBing.remove(j); j--;
+                    flag = true;
+                }
+            }
+            if(flag) {
+                articlesGoogle.remove(i); i--;
+            }
+        }
+        //Lấy phần riêng của Google
+        for (int i = 0; i < articlesGoogle.size(); ++i) {
+            articles.add(articlesGoogle.get(i));
+        }
+        //Lấy phần riêng của Bing
+        for (int i = 0; i < articlesBing.size(); ++i) {
+            articles.add(articlesBing.get(i));
+        }
+        
         return articles;
     }
 }
