@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : aop.xml
+    Created on : December 19, 2011, 10:22 AM
+    Author     : Fate
+    Description:
+        Purpose of the document follows.
+-->
+
+<aspectj>
+    <aspects>
+        <aspect name="util.LoggingAspect"/>
+    </aspects>
+</aspectj>

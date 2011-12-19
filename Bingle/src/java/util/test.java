@@ -21,9 +21,11 @@ public class test {
         //ArrayList<Article> GPage2 = SearchEngine.SearchGoogle("flowers", 2);
         //ArrayList<Article> BingArticles = SearchEngine.SearchBing("flowers", 1, 10);
         //ArrayList<Article> BingLibraryArticles = SearchEngine.SearchBingLibrary("flowers", 1);
-        ArrayList<Article> articles = SearchEngine.Search("flowers", 1, 5);
-        
+        //ArrayList<Article> articles = SearchEngine.Search("flowers", 1, 5);
+
+        System.out.println("Hello World");
+
         int a;
-        a=10;
+        a = 10;
     }
 }

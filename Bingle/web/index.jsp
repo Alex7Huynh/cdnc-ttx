@@ -22,7 +22,7 @@
             <c:forEach items="${articles}" var="item" varStatus="i" begin="0" end="${articles.size()}" step="1">            
             <tr>
                 <td>
-                    <strong>${item.title}</strong><br/>
+                    <strong><a href="${item.link}">${item.title}</a></strong><br/>
                     ${item.link}<br/>
                     ${item.description}<br/>
                     Source: ${item.source}<br/>

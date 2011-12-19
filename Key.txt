@@ -17,3 +17,7 @@ https://www.googleapis.com/customsearch/v1?key=AIzaSyDvysnoSg7Xlw4sKcmtdKhsRx_Ea
     customSearchControl.draw('cse');
   }, true);
 </script>
+
+https://www.googleapis.com/language/translate/v2?key=AIzaSyDvysnoSg7Xlw4sKcmtdKhsRx_EaD_59TM&q=hello%20world&source=en&target=vi
+
+http://api.microsofttranslator.com/v2/Http.svc/Translate?appId=FE383F9A948802A6D19102654EE563456120DDC6&text=hello&from=en&to=vi
