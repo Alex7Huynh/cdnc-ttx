@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <!-- TemplateBeginEditable name="doctitle" -->
+        <title>Result bingle</title>
+        <!-- TemplateEndEditable -->
+        <link href="../style/stylecss.css" rel="stylesheet" type="text/css" />
+        <!-- TemplateBeginEditable name="head" --><!-- TemplateEndEditable -->
+    </head>
+    <body>
+        <div id="Layer1">
+            <div><a href="../About.html" class="style8">About</a></div>
+
+            <div><span class="style18"><span class="style22">B</span><span class="style20">i</span><span class="style17">n</span><span class="style22">g</span><span class="style21">l</span><span class="style20">e</span></span>
+              <input type="text" size="120 px" />
+                <label>
+                    <input type="submit" name="timKiem" id="timKiem" value="Tìm kiếm" />
+              </label>
+          </div>
+            <br/>
+            </td>
+            <!-- TemplateBeginEditable name="EditRegionBody" -->
+            <div>
+              <table width="100%" border="0">
+                <tr>
+                  <td><a href="../www.fit.hcmus.edu.vn">Khoa CNTT - ĐH Khoa học Tự nhiên</a></td>
+                </tr>
+                <tr>
+                  <td><span class="style19">http://www.fit.hcmus.edu.vn</span></td>
+                </tr>
+                <tr>
+                  <td>Hồ sơ cá nhân, đăng ký giảng dạy... Sinh Viên. Hồ sơ cá nhân, đăng ký học tập... Cựu Sinh Viên. Sân chơi cựu sinh viên... Doanh nghiệp. Thông tin hợp tác ...</td>
+                </tr>
+              </table>
+            </div>
+            <br/>
+            <div>
+              <table width="100%" border="0">
+                <tr>
+                  <td><a href="http://www.ictacs.hcmus.edu.vn//ictacs-program">Program - ICTACS 2011</a></td>
+                </tr>
+                <tr>
+                  <td><span class="style19">http://www.ictacs.hcmus.edu.vn /ictacs-program</span></td>
+                </tr>
+                <tr>
+                  <td>ICTACS '11. Website: http://ictacs.hcmus.edu.vn - Email: ictacs@fit.hcmus.edu.vn. CONFERENCE PROGRAM. The accepted papers of ICTACS'11 are invited to ...</td>
+                </tr>
+              </table>
+            </div>
+            <br/>
+            <div>
+              <table width="100%" border="0">
+                <tr>
+                  <td><a href="http://www.ictacs.hcmus.edu.vn">ICTACS 2011</a></td>
+                </tr>
+                <tr>
+                  <td><span class="style19">http://www.ictacs.hcmus.edu.vn</span></td>
+                </tr>
+                <tr>
+                  <td>14 Nov 2011 – ... co-organized by Ho Chi Minh city University of Science (HCMUS), ... do not receive our emails, please contact us at ictacs@fit.hcmus.edu.vn. ...</td>
+                </tr>
+              </table>
+            </div>
+            <br/>
+            <div>
+              <table width="100%" border="0">
+                <tr>
+                  <td><a href="../www.is.fit.hcmuns.edu.vn/ir/Members.aspx">Members</a></td>
+                </tr>
+                <tr>
+                  <td><span class="style19">http://www.is.fit.hcmuns.edu.vn/ir/Members.aspx</span></td>
+                </tr>
+                <tr>
+                  <td>IR Group at HCMUNS- Research In Information Retrieval. Faculty of Information Technology - University of Natural Sciences, Ho Chi Minh ...</td>
+                </tr>
+              </table>
+            </div>
+            <br/>
+            <div>
+              <table width="100%" border="0">
+                <tr>
+                  <td><a href="../www.apcs.hcmuns.edu.vn/Default.aspx?tabid=119">Liên hệ - Trang chủ - Đại Học Khoa Học Tự Nhiên</a></td>
+                </tr>
+                <tr>
+                  <td><span class="style19">www.apcs.hcmuns.edu.vn/Default.aspx?tabid=119</span></td>
+                </tr>
+                <tr>
+                  <td>Th.S Văn Chí Nam: Phụ trách chương trình, vcnam(at)fit.hcmus.edu.vn. TS. ... Th.S Cao Thị Thùy Liên: Chuyên trách, cttlien(at)fit.hcmus.edu.vn. Th.S Lê Ngô ...</td>
+                </tr>
+              </table>
+            </div>
+            <br/>
+            <div>
+              <table width="100%" border="0">
+                <tr>
+                  <td><a href="../www.xmarks.com/site/courses.fit.hcmus.edu.vn/login">courses.fit.hcmus.edu.vn/login/ - Similar Sites and Reviews | Xmarks</a></td>
+                </tr>
+                <tr>
+                  <td><span class="style19">http://www.xmarks.com/site/courses.fit.hcmus.edu.vn/login/</span></td>
+                </tr>
+                <tr>
+                  <td>Xmarks site page for edu courses.fit.hcmus.edu.vn/login/ with topics, reviews, ratings and comments.</td>
+                </tr>
+              </table>
+            </div>
+            <!-- TemplateEndEditable -->
+            <div class="style13">Được phát triển bới Tiến - Toàn - Xuân</div>
+            <div class="style13">Copyright © 2011. All rights reserved</div>
+        </div>
+    </body>
+</html>
