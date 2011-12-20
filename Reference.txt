@@ -30,3 +30,6 @@ http://www.andrewewhite.net/wordpress/2010/03/17/aspectj-annotation-tutorial/
 http://eclipse.org/aspectj/doc/released/faq.php#q:whatisaj
 http://plugins.netbeans.org/plugin/4015/aspectj-ajde-for-netbeans
 http://blog.espenberntsen.net/2010/03/18/aspectj-examples-with-pointcuts-based-on-annotations/
+
+Bing translate
+http://code.google.com/p/microsoft-translator-java-api/
