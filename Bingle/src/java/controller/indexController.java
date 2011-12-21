@@ -39,6 +39,7 @@ public class indexController extends HttpServlet {
             url = "index.jsp";
         } else {
             String keyWord = request.getParameter("key");
+            keyWord = keyWord.replaceAll(" ", "+");
             ArrayList<Article> articles = SearchEngine.Search(keyWord, 1, 10);
             request.setAttribute("action", keyWord);
             request.setAttribute("articles", articles);

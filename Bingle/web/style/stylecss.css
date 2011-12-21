@@ -1,0 +1,54 @@
+a:link {
+		text-decoration:none;
+		font-size: 20px;
+}
+a:visited {
+		text-decoration: none;
+		background-color: #FFFF00;
+}
+a:hover {
+    color: #FF0000;
+    text-decoration: blink;
+}
+a:active {
+    color: #0F9;
+    font-weight: bold;
+}
+
+#Layer1 {
+    position:absolute;
+    width:98%;    
+    z-index:1;
+    visibility: visible;
+}
+.style8 {color: #0000FF}
+.style13 {font-size: 12; color: #666666; }
+.style17 {color: #FFFF00}
+.style18 {font-size: 36px}
+.style19 {color: #44BB4D}
+.style20 {color: #E81736}
+.style21 {color: #44BB4D}
+.style22 {color: #4A3EC1}
+.style1 {font-size: 36px}
+.style3 {font-size: 100px}
+.style7 {color: #FF0000}
+.style8 {color: #0000FF}
+.style11 {color: #00FF00}
+.style13 {font-size: 12; color: #666666;}
+.style14 {color: #FFFF00}
+.source {
+    color: #3399ff;
+}
+#key {
+    position: relative;
+    bottom: 20px;
+}
+#Search {
+    position: relative;
+    bottom: 20px;
+}
+.controlimage {
+    position: relative;
+    bottom: 20px;
+}
+        

@@ -4,23 +4,12 @@
  */
 package util;
 
-import com.google.code.bing.search.client.BingSearchClient;
-import com.google.code.bing.search.client.BingSearchClient.SearchRequestBuilder;
-import com.google.code.bing.search.client.BingSearchServiceClientFactory;
-import com.google.code.bing.search.schema.AdultOption;
-import com.google.code.bing.search.schema.SearchOption;
-import com.google.code.bing.search.schema.SearchResponse;
-import com.google.code.bing.search.schema.SourceType;
-import com.google.code.bing.search.schema.web.WebResult;
-import com.google.code.bing.search.schema.web.WebSearchOption;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import net.sf.json.JSONSerializer;
@@ -45,7 +34,7 @@ public class SearchEngine {
             //Get JSON content
             String line;
             StringBuilder builder = new StringBuilder();
-            BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+            BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream(), "UTF-8"));
             while ((line = reader.readLine()) != null) {
                 builder.append(line);
             }
@@ -78,7 +67,7 @@ public class SearchEngine {
             //Get JSON content
             String line;
             StringBuilder builder = new StringBuilder();
-            BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+            BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream(), "UTF-8"));
             while ((line = reader.readLine()) != null) {
                 builder.append(line);
             }
@@ -114,67 +103,43 @@ public class SearchEngine {
         return articles;
     }
 
-    public static ArrayList<Article> SearchBingLibrary(String aKeyword, int aPageNumber) {
-        ArrayList<Article> articles = new ArrayList<Article>();
-        //Create search string
-        String apiID = "FE383F9A948802A6D19102654EE563456120DDC6";
-        //String google = "http://api.bing.net/json.aspx?Appid=" + apiID + "&query=" + aKeyword + "&sources=web";
-        //Connect and get results
-        BingSearchServiceClientFactory factory = BingSearchServiceClientFactory.newInstance();
-        BingSearchClient client = factory.createBingSearchClient();
-
-        SearchRequestBuilder builder = client.newSearchRequestBuilder();
-        builder.withAppId(apiID);
-        builder.withQuery(aKeyword);
-        builder.withSourceType(SourceType.WEB);
-        builder.withVersion("2.0");
-        builder.withMarket("en-us");
-        builder.withAdultOption(AdultOption.MODERATE);
-        builder.withSearchOption(SearchOption.ENABLE_HIGHLIGHTING);
-
-        builder.withWebRequestCount(10L);
-        builder.withWebRequestOffset(0L);
-        builder.withWebRequestSearchOption(WebSearchOption.DISABLE_HOST_COLLAPSING);
-        builder.withWebRequestSearchOption(WebSearchOption.DISABLE_QUERY_ALTERATIONS);
-
-        SearchResponse response = client.search(builder.getResult());
-
-        for (WebResult result : response.getWeb().getResults()) {
-            articles.add(new Article(result.getTitle(), result.getUrl(), result.getDescription(), "Bing"));
-        }
-
-        return articles;
-    }
-
     public static ArrayList<Article> Search(String aKeyword, int aPageNumber, int aQuantity) {
         ArrayList<Article> articles = new ArrayList<Article>();
         ArrayList<Article> articlesGoogle = SearchEngine.SearchGoogle(aKeyword, aPageNumber, aQuantity);
         ArrayList<Article> articlesBing = SearchEngine.SearchBing(aKeyword, aPageNumber, aQuantity);
-        
+
         //Lấy phần chung
         for (int i = 0; i < articlesGoogle.size(); ++i) {
             boolean flag = false;
             for (int j = 0; j < articlesBing.size(); ++j) {
                 if (articlesGoogle.get(i).getTitle().equals(articlesBing.get(j).getTitle())) {
                     articlesGoogle.get(i).setSource("Google/Bing");
-                    articles.add(articlesGoogle.get(i));
-                    articlesBing.remove(j); j--;
+                    Article tmp = articlesGoogle.get(i);
+                    tmp.setTitle(TranslateEngine.Translate(tmp.getTitle()));
+                    articles.add(tmp);
+                    articlesBing.remove(j);
+                    j--;
                     flag = true;
                 }
             }
-            if(flag) {
-                articlesGoogle.remove(i); i--;
+            if (flag) {
+                articlesGoogle.remove(i);
+                i--;
             }
         }
         //Lấy phần riêng của Google
         for (int i = 0; i < articlesGoogle.size(); ++i) {
-            articles.add(articlesGoogle.get(i));
+            Article tmp = articlesGoogle.get(i);
+            tmp.setTitle(TranslateEngine.Translate(tmp.getTitle()));
+            articles.add(tmp);
         }
         //Lấy phần riêng của Bing
         for (int i = 0; i < articlesBing.size(); ++i) {
-            articles.add(articlesBing.get(i));
+            Article tmp = articlesBing.get(i);
+            tmp.setTitle(TranslateEngine.Translate(tmp.getTitle()));
+            articles.add(tmp);
         }
-        
+
         return articles;
     }
 }
