@@ -17,9 +17,18 @@
         <form id="frmSearch" action="indexController">
             <img src="images/bingle.png" width="120px" height="60px"/>
             <input class="controlimage" type="text" name="key" value="${key}" size="70%" placeholder="Enter keywords"/>
-            <input class="controlimage" type="submit" name="Search" value="Search" />
-            <input class="controlimage" type=button onClick="parent.location='about.jsp'" value='About'/>            
-            <input type="hidden" name="act" value="search"/>
+            <input class="controlimage" type="submit" value="Search" />
+            <input class="controlimage" type=button onClick="parent.location='about.jsp'" value='About'/>
+            <input type="hidden" name="act" value="search" />
+            <c:if test="${key != null}">
+                <div>Trang:&nbsp;&nbsp;
+                    <c:forEach varStatus="i" begin="0" end="9" step="1">
+                        <a href="indexController?act=search&key=${key}&page=${i.count}">
+                            <font style="font-size: 15px;" >${i.count}</font> &nbsp;&nbsp;&nbsp;
+                        </a>
+                    </c:forEach>
+                </div>
+            </c:if>
         </form>
         <table width="100%" align="left">
             <c:forEach items="${articles}" var="item" varStatus="i" begin="0" end="${articles.size()}" step="1">            

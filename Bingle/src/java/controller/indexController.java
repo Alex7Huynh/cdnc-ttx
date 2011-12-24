@@ -35,16 +35,25 @@ public class indexController extends HttpServlet {
         HttpSession session = request.getSession();
         String act = request.getParameter("act");
         String url = "index.jsp";
-        if(act != null && "init".equals(act)) {
+        int nResult = 5;
+        int page = 1;
+        if (act != null && "init".equals(act)) {
             url = "index.jsp";
-        } else {
+        } else if (act != null && "search".equals(act)) {
             String keyWord = request.getParameter("key");
             keyWord = keyWord.replaceAll(" ", "+");
-            ArrayList<Article> articles = SearchEngine.Search(keyWord, 1, 10);
-            request.setAttribute("action", keyWord);
+            if (request.getParameter("page") != null) {
+                page = Integer.parseInt(request.getParameter("page"));
+            }
+            ArrayList<Article> articles = SearchEngine.Search(keyWord, page, nResult);
+
+            request.setAttribute("key", keyWord);
             request.setAttribute("articles", articles);
+
             url = "index.jsp";
         }
+
+
         request.getRequestDispatcher(url).forward(request, response);
     }
 

@@ -1,4 +1,4 @@
-BING, 0 < result < 50
+BING, 0 < nResult/request < 50
 https://ssl.bing.com/webmaster/Developers/Traffic/?AppId=FE383F9A948802A6D19102654EE563456120DDC6
 http://www.bing.com/developers/s/APIBasics.html
 http://code.google.com/p/bing-search-java-sdk/
@@ -6,7 +6,7 @@ http://msdn.microsoft.com/en-us/library/dd250846.aspx
 
 
 
-GOOGLE, 0 < result < 10
+GOOGLE, 0 < nResult/request < 10, max results = 100
 https://code.google.com/apis/console/#project:356366871479:access
 http://www.google.com/cse/panel/basics?cx=006128248623655005956:_w9w403uat0&sig=__eNnlRDYPvlB6Xr3HYD1_3MP4mGM=
 http://www.google.com/cse/panel/basics?cx=006128248623655005956:_w9w403uat0
