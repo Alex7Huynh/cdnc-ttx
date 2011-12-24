@@ -3,13 +3,11 @@
     Created on : Dec 15, 2011, 9:19:50 AM
     Author     : Fate
 --%>
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
+<%@ page contentType="text/html; charset=UTF-8" %>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Bingle</title>
         <link href="style/stylecss.css" rel="stylesheet" type="text/css" />
     </head>
