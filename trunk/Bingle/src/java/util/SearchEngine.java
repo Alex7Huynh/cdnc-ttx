@@ -26,8 +26,9 @@ public class SearchEngine {
             //Create search string
             String APIKey = "AIzaSyDvysnoSg7Xlw4sKcmtdKhsRx_EaD_59TM";
             String CSEID = "006128248623655005956:_w9w403uat0";
+            int startIndex = (aPageNumber - 1) * 10 + 1;
             String urlTemplate = "https://www.googleapis.com/customsearch/v1?key="
-                    + APIKey + "&cx=" + CSEID + "&q=" + aKeyword + "&num=" + aQuantity + "&start=" + (aPageNumber - 1) * 10 + 1 + "&alt=json";
+                    + APIKey + "&cx=" + CSEID + "&q=" + aKeyword + "&num=" + aQuantity + "&start=" + startIndex + "&alt=json";
             //Connect
             URL url = new URL(urlTemplate);
             URLConnection connection = url.openConnection();
