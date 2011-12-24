@@ -22,7 +22,15 @@ import util.SearchEngine;
 @WebServlet(name = "indexController", urlPatterns = {"/indexController"})
 public class indexController extends HttpServlet {
 
-    /** 
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 6803419603489979751L;
+	public indexController()
+	{
+		super();
+	}
+	/** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
      * @param request servlet request
      * @param response servlet response
@@ -31,9 +39,8 @@ public class indexController extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-    	request.setCharacterEncoding("utf-8");
+    	request.setCharacterEncoding("UTF-8");
         response.setContentType("text/html;charset=UTF-8");
-        HttpSession session = request.getSession();
         String act = request.getParameter("act");
         String url = "index.jsp";
         int nResult = 5;
