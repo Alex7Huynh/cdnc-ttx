@@ -7,9 +7,13 @@ package util;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import net.sf.json.JSONSerializer;
@@ -106,41 +110,47 @@ public class SearchEngine {
 
     public static ArrayList<Article> Search(String aKeyword, int aPageNumber, int aQuantity) {
         ArrayList<Article> articles = new ArrayList<Article>();
-        ArrayList<Article> articlesGoogle = SearchEngine.SearchGoogle(aKeyword, aPageNumber, aQuantity);
-        ArrayList<Article> articlesBing = SearchEngine.SearchBing(aKeyword, aPageNumber, aQuantity);
+        try {
+            String keyWord = URLEncoder.encode(aKeyword, "UTF-8");
 
-        //Lấy phần chung
-        for (int i = 0; i < articlesGoogle.size(); ++i) {
-            boolean flag = false;
-            for (int j = 0; j < articlesBing.size(); ++j) {
-                if (articlesGoogle.get(i).getTitle().equals(articlesBing.get(j).getTitle())) {
-                    articlesGoogle.get(i).setSource("Google/Bing");
-                    Article tmp = articlesGoogle.get(i);
-                    tmp.setTitle(TranslateEngine.Translate(tmp.getTitle()));
-                    articles.add(tmp);
-                    articlesBing.remove(j);
-                    j--;
-                    flag = true;
+            ArrayList<Article> articlesGoogle = SearchEngine.SearchGoogle(keyWord, aPageNumber, aQuantity);
+            ArrayList<Article> articlesBing = SearchEngine.SearchBing(keyWord, aPageNumber, aQuantity);
+
+            //Lấy phần chung
+            for (int i = 0; i < articlesGoogle.size(); ++i) {
+                boolean flag = false;
+                for (int j = 0; j < articlesBing.size(); ++j) {
+                    if (articlesGoogle.get(i).getLink().equals(articlesBing.get(j).getLink())) {
+                        articlesGoogle.get(i).setSource("Google/Bing");
+                        Article tmp = articlesGoogle.get(i);
+                        tmp.setTitle(TranslateEngine.Translate(tmp.getTitle()));
+                        articles.add(tmp);
+                        articlesBing.remove(j);
+                        j--;
+                        flag = true;
+                    }
+                }
+                if (flag) {
+                    articlesGoogle.remove(i);
+                    i--;
                 }
             }
-            if (flag) {
-                articlesGoogle.remove(i);
-                i--;
+            //Lấy phần riêng của Google
+            for (int i = 0; i < articlesGoogle.size(); ++i) {
+                Article tmp = articlesGoogle.get(i);
+                tmp.setTitle(TranslateEngine.Translate(tmp.getTitle()));
+                articles.add(tmp);
             }
+            //Lấy phần riêng của Bing
+            for (int i = 0; i < articlesBing.size(); ++i) {
+                Article tmp = articlesBing.get(i);
+                tmp.setTitle(TranslateEngine.Translate(tmp.getTitle()));
+                articles.add(tmp);
+            }
+        } catch (UnsupportedEncodingException ex) {
+            Logger.getLogger(SearchEngine.class.getName()).log(Level.SEVERE, null, ex);
         }
-        //Lấy phần riêng của Google
-        for (int i = 0; i < articlesGoogle.size(); ++i) {
-            Article tmp = articlesGoogle.get(i);
-            tmp.setTitle(TranslateEngine.Translate(tmp.getTitle()));
-            articles.add(tmp);
-        }
-        //Lấy phần riêng của Bing
-        for (int i = 0; i < articlesBing.size(); ++i) {
-            Article tmp = articlesBing.get(i);
-            tmp.setTitle(TranslateEngine.Translate(tmp.getTitle()));
-            articles.add(tmp);
-        }
-
+        
         return articles;
     }
 }
