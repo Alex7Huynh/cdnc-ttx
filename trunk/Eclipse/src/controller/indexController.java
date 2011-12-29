@@ -46,13 +46,12 @@ public class indexController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String act = request.getParameter("act");
         String url = "index.jsp";
-        int nResult = 5;
+        int nResult = 10;
         int page = 1;
         if (act != null && "init".equals(act)) {
             url = "index.jsp";
         } else if (act != null && "search".equals(act)) {
-            String keyWord = request.getParameter("key");
-            keyWord = keyWord.replaceAll(" ", "+");
+            String keyWord = request.getParameter("key");            
             if (request.getParameter("page") != null) {
                 page = Integer.parseInt(request.getParameter("page"));
             }
