@@ -6,7 +6,7 @@ public aspect LogAspect {
 	pointcut Search(String aKeyword) : call( * SearchEngine.Search(String, int, int)) && args(aKeyword, int, int);
 	before(String aKeyword) : Search(aKeyword) {
 		Logger logger = Logger.getLogger("Logging.Search");
-		logger.fatal(aKeyword);
+		logger.info(aKeyword);
 	}
 	pointcut AllMethod() : call(* bingle..*(..)) && !within(bingle..LogAspect);
 	after() throwing(Exception ex) : AllMethod() 
@@ -16,5 +16,4 @@ public aspect LogAspect {
 		
 	}
 	
-
 }
