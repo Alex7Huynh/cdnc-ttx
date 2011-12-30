@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package controller;
+package bingle.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -15,8 +15,11 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 
-import util.Article;
-import util.SearchEngine;
+import bingle.util.Article;
+import bingle.util.SearchEngine;
+
+import com.oracle.net.Sdp;
+
 
 /**
  *
