@@ -25,12 +25,10 @@ public class SearchEngine {
 
     public static ArrayList<Article> SearchGoogle(String aKeyword, int aPageNumber, int aQuantity) throws IOException {
         ArrayList<Article> articles = new ArrayList<Article>();
-            //Create search string
-            String APIKey = "AIzaSyDvysnoSg7Xlw4sKcmtdKhsRx_EaD_59TM";
-            String CSEID = "006128248623655005956:_w9w403uat0";
+            //Create search string            
             int startIndex = (aPageNumber - 1) * 10 + 1;
             String urlTemplate = "https://www.googleapis.com/customsearch/v1?key="
-                    + APIKey + "&cx=" + CSEID + "&q=" + aKeyword + "&num=" + aQuantity + "&start=" + startIndex + "&alt=json";
+                    + MyKey.GoogleKey + "&cx=" + MyKey.CustomSearchID + "&q=" + aKeyword + "&num=" + aQuantity + "&start=" + startIndex + "&alt=json";
             //Connect
             URL url = new URL(urlTemplate);
             URLConnection connection = url.openConnection();
@@ -56,10 +54,9 @@ public class SearchEngine {
 
     public static ArrayList<Article> SearchBing(String aKeyword, int aPageNumber, int aQuantity) throws IOException {
         ArrayList<Article> articles = new ArrayList<Article>();
-            //Create search string
-            String apiID = "FE383F9A948802A6D19102654EE563456120DDC6";
+            //Create search string            
             String urlTemplate = "http://api.bing.net/json.aspx?Appid="
-                    + apiID + "&query=" + aKeyword + "&web.count=" + aQuantity + "&web.offset=" + (aPageNumber - 1) * 10 + "&sources=web";
+                    + MyKey.BingID + "&query=" + aKeyword + "&web.count=" + aQuantity + "&web.offset=" + (aPageNumber - 1) * 10 + "&sources=web";
             //Connect
             URL url = new URL(urlTemplate);
             URLConnection connection = url.openConnection();
@@ -76,14 +73,24 @@ public class SearchEngine {
             for (int i = 0; i < items.size(); ++i) {
                 JSONObject item = items.getJSONObject(i);
                 String title, link, description;
-                //Get title
+                ///Get title
+                try {
                     title = item.getString("Title");
+                } catch (Exception ex) {
+                    title = null;
+                }
                 //Get link
-
+                try {
                     link = item.getString("Url");
+                } catch (Exception ex) {
+                    link = null;
+                }
                 //Get description
-
+                try {
                     description = item.getString("Description");
+                } catch (Exception ex) {
+                    description = null;
+                }                    
                 articles.add(new Article(title, link, description, "Bing"));
             }
         return articles;
