@@ -1,8 +1,19 @@
 BING
-AppID (Bing): FE383F9A948802A6D19102654EE563456120DDC6
+AppID (Bing):
+FE383F9A948802A6D19102654EE563456120DDC6
+A3AA1A2FFD658D17A0CD77AF66FB6BD4797073B8
+B917EAEF3A6B5A356D80B344340F8E5903FF90A0
+
+http://api.microsofttranslator.com/v2/Http.svc/Translate?appId=FE383F9A948802A6D19102654EE563456120DDC6&text=hello&from=en&to=vi
 -----------------------
-API Key (Custom search google): AIzaSyDvysnoSg7Xlw4sKcmtdKhsRx_EaD_59TM
-Search engine unique ID: 006128248623655005956:_w9w403uat0
+API Key (Google custom search):
+AIzaSyDvysnoSg7Xlw4sKcmtdKhsRx_EaD_59TM
+AIzaSyD4UuWb9fMi8Ph4yi84A9XuDzVwSgvcNQA
+
+Search engine unique ID:
+006128248623655005956:_w9w403uat0
+010900237224102988169:dfu9alcyg1c
+
 https://www.googleapis.com/customsearch/v1?key=AIzaSyDvysnoSg7Xlw4sKcmtdKhsRx_EaD_59TM&cx=006128248623655005956:_w9w403uat0&q=flowers&alt=json
 ---Code---
 <div id="cse" style="width: 100%;">Loading</div>
@@ -18,6 +29,15 @@ https://www.googleapis.com/customsearch/v1?key=AIzaSyDvysnoSg7Xlw4sKcmtdKhsRx_Ea
   }, true);
 </script>
 
-https://www.googleapis.com/language/translate/v2?key=AIzaSyDvysnoSg7Xlw4sKcmtdKhsRx_EaD_59TM&q=hello%20world&source=en&target=vi
+<div id="cse" style="width: 100%;">Loading</div>
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script type="text/javascript"> 
+  google.load('search', '1', {language : 'en', style : google.loader.themes.SHINY});
+  google.setOnLoadCallback(function() {
+    var customSearchControl = new google.search.CustomSearchControl(
+      '010900237224102988169:dfu9alcyg1c');
 
-http://api.microsofttranslator.com/v2/Http.svc/Translate?appId=FE383F9A948802A6D19102654EE563456120DDC6&text=hello&from=en&to=vi
+    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+    customSearchControl.draw('cse');
+  }, true);
+</script>
